@@ -5,3 +5,4 @@ Now you can update the theme through the Retrobat interface, by running the scri
 
 
 If you want download the full pack of theme, go to https://github.com/MIKCPU/Maximusbat-theme
+
