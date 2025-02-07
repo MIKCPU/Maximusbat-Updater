@@ -129,6 +129,27 @@ if (Test-Path $gitFolder) {
     Write-Host "La cartella $gitFolder non esiste." -ForegroundColor Yellow
 }
 
+# Ottieni il percorso della cartella dell'utente corrente
+$desktopPath = [System.Environment]::GetFolderPath('Desktop')
+
+# Definisci il percorso del collegamento e dell'icona
+$shortcutPath = "$desktopPath\RetroBat PIxN - RGS.lnk"
+$retrobatExePath = "$driveLetter\retrobat\retrobat.exe"  # Modifica questo percorso con il corretto percorso dell'exe di RetroBat
+$iconPath = "$driveLetter\retrobat\_PreRequisites -Install First-\icon.ico"  # Modifica questo percorso con il percorso dell'icona
+
+# Crea l'oggetto COM per creare il collegamento
+$shell = New-Object -ComObject WScript.Shell
+$shortcut = $shell.CreateShortcut($shortcutPath)
+
+# Imposta il percorso dell'eseguibile e l'icona
+$shortcut.TargetPath = $retrobatExePath
+$shortcut.IconLocation = $iconPath
+
+# Salva il collegamento
+$shortcut.Save()
+
+# Conferma la creazione del collegamento
+Write-Host "Collegamento RetroBat PIxN - RGS creato con successo sul desktop!" -ForegroundColor Green
 
 Write-Host "Operation Complete!" -ForegroundColor Green
 Write-Host "Operazione completata!" -ForegroundColor Green

@@ -114,7 +114,8 @@ foreach ($file in $fileToDelete) {
 }
 
 Write-Host "Operazione completata!" -ForegroundColor Green
-Pause
+
+pause
 
 cls
 Write-Host "______________________________________________________" -ForegroundColor Green                                                        
