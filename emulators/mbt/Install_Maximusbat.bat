@@ -62,6 +62,10 @@ echo [91mInvalid option. Please try again. - Opzione non valida. Riprova.[0m
 goto menu
 
 :exit
+<<<<<<< HEAD
 cls
 echo [91mExit... - Uscita...[0m
+=======
+echo  Exit... - Uscita...
+>>>>>>> 3cae93ffd1ab802d21d3fcce1121b88c736d459e
 exit
