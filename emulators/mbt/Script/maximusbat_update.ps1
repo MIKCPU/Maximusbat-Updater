@@ -139,6 +139,7 @@ $shortcut.TargetPath = $retrobatExePath
 $shortcut.IconLocation = $iconPath
 $shortcut.Save()
 
+Write-Host "RetroBat PIxN - RGS shortcut successfully created on desktop!" -ForegroundColor Green
 Write-Host "Collegamento RetroBat PIxN - RGS creato con successo sul desktop!" -ForegroundColor Green
 
 Write-Host "Operation Complete!" -ForegroundColor Green
