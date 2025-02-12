@@ -1,9 +1,9 @@
 $logo = @"
-M   M  III  K   K  CCCC  PPPP  U   U
+M   M  III  K   K CCCCC  PPPPP U   U
 MM MM   I   K  K  C      P   P U   U
-M M M   I   K K   C      PPPP  U   U
+M M M   I   K K   C      PPPPP U   U
 M   M   I   KK    C      P     U   U
-M   M  III  K  K  CCCC  P      UUUU
+M   M  III  K  K  CCCCC  P     UUUUU
 "@
 
 Write-Host $logo -ForegroundColor Red
@@ -19,11 +19,17 @@ $logo = @"
 
 Write-Host $logo -ForegroundColor Red
 
-$driveLetter = (Get-Location).Drive.Name + ":"
-$gitPortable = "$driveLetter\RetroBat\emulators\mbt\PortableGit\bin\git.exe"
-$destinationFolder = "$driveLetter\retrobat\Maximusbat-Updater-main"
+$retroBatPath = Get-ChildItem -Path (Get-PSDrive -PSProvider FileSystem).Root -Recurse -Directory -Filter "RetroBat" -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+
+if (-not $retroBatPath) {
+    Write-Host "Error: The RetroBat folder was not found."
+    Write-Host "Errore: La cartella RetroBat non è stata trovata."
+    exit
+}
+$gitPortable = "$retroBatPath\emulators\mbt\PortableGit\bin\git.exe"
+$destinationFolder = "$retroBatPath\Maximusbat-Updater-main"
 $repoURL = "https://github.com/MIKCPU/Maximusbat-Updater.git"
-$sourceFolder = "$driveLetter\retrobat\Maximusbat-Updater-main"
+$sourceFolder = "$retroBatPath\Maximusbat-Updater-main"
 
 & $gitPortable config --global http.postBuffer 524288000  
 & $gitPortable config --global http.sslBackend openssl  
@@ -34,7 +40,7 @@ if (-Not (Test-Path $destinationFolder)) {
 
     $cloneSuccess = $false
     $retryCount = 0
-    $maxRetries = 5 
+    $maxRetries = 5  # Max retries before giving up
 
     while (-Not $cloneSuccess -and $retryCount -lt $maxRetries) {
         try {
@@ -129,17 +135,26 @@ if (Test-Path $gitFolder) {
     Write-Host "La cartella $gitFolder non esiste." -ForegroundColor Yellow
 }
 
+# Ottieni il percorso della cartella dell'utente corrente
 $desktopPath = [System.Environment]::GetFolderPath('Desktop')
+
+# Definisci il percorso del collegamento e dell'icona
 $shortcutPath = "$desktopPath\RetroBat PIxN - RGS.lnk"
-$retrobatExePath = "$driveLetter\retrobat\retrobat.exe"
-$iconPath = "$driveLetter\retrobat\_PreRequisites -Install First-\icon.ico"
+$retrobatExePath = "$driveLetter\retrobat\retrobat.exe"  # Modifica questo percorso con il corretto percorso dell'exe di RetroBat
+$iconPath = "$driveLetter\retrobat\_PreRequisites -Install First-\icon.ico"  # Modifica questo percorso con il percorso dell'icona
+
+# Crea l'oggetto COM per creare il collegamento
 $shell = New-Object -ComObject WScript.Shell
 $shortcut = $shell.CreateShortcut($shortcutPath)
+
+# Imposta il percorso dell'eseguibile e l'icona
 $shortcut.TargetPath = $retrobatExePath
 $shortcut.IconLocation = $iconPath
+
+# Salva il collegamento
 $shortcut.Save()
 
-Write-Host "RetroBat PIxN - RGS shortcut successfully created on desktop!" -ForegroundColor Green
+# Conferma la creazione del collegamento
 Write-Host "Collegamento RetroBat PIxN - RGS creato con successo sul desktop!" -ForegroundColor Green
 
 Write-Host "Operation Complete!" -ForegroundColor Green
@@ -154,11 +169,11 @@ Write-Host "Grazie per aver scaricato ed installato il mio tema!  " -ForegroundC
 Write-Host "______________________________________________________" -ForegroundColor Green
                                                       
 $logo = @"
-M   M  III  K   K  CCCC  PPPP  U   U
+M   M  III  K   K CCCCC  PPPPP U   U
 MM MM   I   K  K  C      P   P U   U
-M M M   I   K K   C      PPPP  U   U
+M M M   I   K K   C      PPPPP U   U
 M   M   I   KK    C      P     U   U
-M   M  III  K  K  CCCC  P      UUUU
+M   M  III  K  K  CCCCC  P     UUUUU
 "@
 
 Write-Host $logo -ForegroundColor Red   

@@ -20,10 +20,16 @@ $logo = @"
 
 Write-Host $logo -ForegroundColor Red
 
-$driveLetter = (Get-Location).Drive.Name + ":"
-$gitPortable = "$driveLetter\RetroBat\emulators\mbt\PortableGit\bin\git.exe"
+$retroBatPath = Get-ChildItem -Path (Get-PSDrive -PSProvider FileSystem).Root -Recurse -Directory -Filter "RetroBat" -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+
+if (-not $retroBatPath) {
+    Write-Host "Error: The RetroBat folder was not found."
+    Write-Host "Errore: La cartella RetroBat non è stata trovata."
+    exit
+}
+$gitPortable = "$retroBatPath\emulators\mbt\PortableGit\bin\git.exe"
 $repoURL = "https://github.com/MIKCPU/Maximusbat-theme.git"
-$destinationFolder = "$driveLetter\RetroBat\emulationstation\.emulationstation\themes\Maximusbat"
+$destinationFolder = "$retroBatPath\RetroBat\emulationstation\.emulationstation\themes\Maximusbat"
 
 # Verifica se PortableGit esiste
 if (-not (Test-Path $gitPortable)) {
