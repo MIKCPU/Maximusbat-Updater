@@ -30,7 +30,8 @@ This is the theme updater, it adds features for my Maximusbat theme:
 - Installs splashscreen intro and collections and customization files.
 
 If you want, you can download Tool Installer to install all the features.
-Go to https://github.com/MIKCPU/Maximuxbat-installer and read the instructions https://github.com/MIKCPU/Maximuxbat-installer/blob/main/README.md
+Go to https://github.com/MIKCPU/Maximuxbat-installer and
+read the instructions https://github.com/MIKCPU/Maximuxbat-installer/blob/main/README.md
 ```
 ITA
 ```
@@ -40,4 +41,5 @@ Questo è lo strumento di aggiornamento del tema, aggiunge le funzioni per il mi
 - Installa  splashscreen intro e collezioni e file di personalizzazione.
 
 Se vuoi, puoi scaricare Tool Installer per installare tutte le funzioni.
-Vai su https://github.com/MIKCPU/Maximuxbat-installer e leggi le istruzioni https://github.com/MIKCPU/Maximuxbat-installer/blob/main/README.md
+Vai su https://github.com/MIKCPU/Maximuxbat-installer e
+leggi le istruzioni https://github.com/MIKCPU/Maximuxbat-installer/blob/main/README.md
