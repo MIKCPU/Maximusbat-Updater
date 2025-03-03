@@ -20,11 +20,22 @@
 ##     ## ##     ##  ##   ##   ##  ##     ## ##     ## ##    ## ##     ## ##     ##    ##    
 ##     ## ##     ## ##     ## #### ##     ##  #######   ######  ########  ##     ##    ##
 ```   
-This is the updater, to download and then update the Maximusbat theme for Retrobat v7.x.x and future release.
 
+'''
+ENG
+```
+This is the theme updater, it adds features for my Maximusbat theme:
 
-Now you can update the theme through the Retrobat interface, by running the script I created, or by launching the command "maximus_theme.bat which will start the download of the entire package containing both the theme and all the files that compose it (Video and Images)
+- Adds the ability to update the theme from inside Retrobat
+- Installs splashscreen intro and collections and customization files.
 
+If you want, you can download Tool Installer to install all the features, go to https://github.com/MIKCPU/Maximuxbat-installer and read the instructions https://github.com/MIKCPU/Maximuxbat-installer/blob/main/README.md
+```
+ITA
+```
+Questo è lo strumento di aggiornamento del tema, aggiunge le funzioni per il mio tema Maximusbat: 
 
-If you want download the full pack of theme, go to https://github.com/MIKCPU/Maximusbat-theme
+- Aggiunge la possibilità di aggiornare il tema da dentro Retrobat
+- Installa  splashscreen intro e collezioni e file di personalizzazione.
 
+Se vuoi, puoi scaricare Tool Installer per installare tutte le funzioni, vai su https://github.com/MIKCPU/Maximuxbat-installer e leggi le istruzioni https://github.com/MIKCPU/Maximuxbat-installer/blob/main/README.md
