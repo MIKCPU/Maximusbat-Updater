@@ -1,0 +1,31 @@
+name: Upload Maximusbat to Mega
+
+on:
+  push:
+    paths:
+      - 'Maximusbat/**'   # solo se cambia Maximusbat
+
+jobs:
+  sync-to-mega:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install rclone
+        run: |
+          curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+          unzip rclone-current-linux-amd64.zip
+          sudo cp rclone-*-linux-amd64/rclone /usr/bin/
+          sudo chmod 755 /usr/bin/rclone
+
+      - name: Configure rclone
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "$RCLONE_CONFIG" > ~/.config/rclone/rclone.conf
+        env:
+          RCLONE_CONFIG: ${{ secrets.RCLONE_CONF }}
+
+      - name: Sync Maximusbat to Mega
+        run: |
+          rclone sync Maximusbat MBT-Themes:Maximusbat --progress --delete-during
